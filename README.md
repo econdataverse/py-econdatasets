@@ -1,6 +1,10 @@
 # econdatasets
 
-[![codecov](https://codecov.io/gh/econdataverse/py-econdatasets/graph/badge.svg)](https://codecov.io/gh/econdataverse/py-econdatasets)
+![PyPI](https://img.shields.io/pypi/v/econdatasets?label=pypi%20package)
+![PyPI Downloads](https://img.shields.io/pypi/dm/econdatasets)
+[![tests.yml](https://github.com/econdataverse/py-econdatasets/actions/workflows/tests.yml/badge.svg)](https://github.com/econdataverse/py-econdatasets/actions/workflows/tests.yml)
+[![codecov.yml](https://codecov.io/gh/econdataverse/py-econdatasets/graph/badge.svg)](https://app.codecov.io/gh/econdataverse/py-econdatasets)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Easily download EconDataverse datasets with Polars.
 
