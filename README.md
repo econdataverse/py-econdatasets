@@ -1,5 +1,7 @@
 # econdatasets
 
+[![codecov](https://codecov.io/gh/econdataverse/py-econdatasets/graph/badge.svg)](https://codecov.io/gh/econdataverse/py-econdatasets)
+
 Easily download EconDataverse datasets with Polars.
 
 The [EconDataverse](https://www.econdataverse.org) is a universe of open-source packages to work seamlessly with economic data. This package makes it easy to download selected datasets that are preprocessed by EconDataverse packages and publicly hosted on [Hugging Face](https://huggingface.co/econdataverse). It is the Python counterpart of the R package [econdatasets](https://github.com/econdataverse/r-econdatasets).
