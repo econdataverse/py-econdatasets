@@ -14,17 +14,27 @@ class FakeResponse(io.BytesIO):
 
 
 @pytest.fixture
-def mock_json(monkeypatch):
-    """Patch urllib so `get_json` returns `payload` and records requested URLs."""
+def mock_body(monkeypatch):
+    """Patch urllib so every request returns the raw `body` bytes and records URLs."""
     calls = []
 
-    def _install(payload):
+    def _install(body: bytes):
         def fake_urlopen(request, timeout=None):
             calls.append(request.full_url)
-            return FakeResponse(json.dumps(payload).encode())
+            return FakeResponse(body)
 
         monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
         return calls
+
+    return _install
+
+
+@pytest.fixture
+def mock_json(mock_body):
+    """Patch urllib so `get_json` returns `payload` and records requested URLs."""
+
+    def _install(payload):
+        return mock_body(json.dumps(payload).encode())
 
     return _install
 
