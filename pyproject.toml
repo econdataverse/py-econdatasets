@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "econdatasets"
+version = "0.1.0"
+description = "Easily download EconDataverse datasets with Polars"
+readme = "README.md"
+authors = [{ name = "Christoph Scheuch", email = "christoph@tidy-intelligence.com" }]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+requires-python = ">=3.10"
+dependencies = [
+    "polars>=1.2.0",
+]
+keywords = ["economics", "data", "polars", "hugging-face", "econdataverse"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+Homepage = "https://econdataverse.github.io/py-econdatasets/"
+Repository = "https://github.com/econdataverse/py-econdatasets"
+Issues = "https://github.com/econdataverse/py-econdatasets/issues"
+Changelog = "https://github.com/econdataverse/py-econdatasets/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+]
+docs = [
+    "great-docs>=0.17.0; python_version >= '3.11'",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "online: tests that hit the live Hugging Face API (deselect with '-m \"not online\"')",
+]
