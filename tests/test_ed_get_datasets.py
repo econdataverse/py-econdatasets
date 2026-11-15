@@ -1,5 +1,4 @@
 import urllib.error
-from datetime import datetime, timezone
 
 import polars as pl
 import pytest
@@ -44,7 +43,12 @@ def test_ed_get_datasets_parses_response(mock_json):
     assert df["dataset"].to_list() == ["econdataverse/wbids", "econdataverse/imfweo"]
     assert df["total_downloads"].to_list() == [109, 42]
     assert df["is_gated"].to_list() == [False, True]
-    assert df["last_modified"][0] == datetime(2025, 12, 11, 11, 56, 55, tzinfo=timezone.utc)
+    # Compare as strings: converting a tz-aware value to a Python datetime needs
+    # the `tzdata` package on Windows.
+    assert df["last_modified"].dt.strftime("%Y-%m-%dT%H:%M:%S%z").to_list() == [
+        "2025-12-11T11:56:55+0000",
+        "2026-10-19T12:32:20+0000",
+    ]
 
 
 def test_ed_get_datasets_empty(mock_json):
